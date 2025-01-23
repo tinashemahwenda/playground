@@ -10,9 +10,9 @@ class QuestionsPage extends StatefulWidget {
 class _QuestionsPageState extends State<QuestionsPage> {
   final List<Map<String, dynamic>> questions = [
     {'year': 2020, 'paperNumber': 1, 'body': 'Question 1 from 2020'},
-    {'year': 2020, 'paperNumber': 2, 'body': 'Question 1 from 2020'},
+    {'year': 2020, 'paperNumber': 2, 'body': 'Question 2 from 2020'},
     {'year': 2021, 'paperNumber': 1, 'body': 'Question 1 from 2021'},
-    {'year': 2021, 'paperNumber': 2, 'body': 'Question 1 from 2021'},
+    {'year': 2021, 'paperNumber': 2, 'body': 'Question 2 from 2021'},
     {'year': 2022, 'paperNumber': 1, 'body': 'Question 1 from 2022'}
   ];
 
@@ -57,13 +57,25 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          selectedFilter == filter ? Colors.blue : Colors.grey,
+                      backgroundColor: selectedFilter == filter
+                          ? Colors.blue
+                          : Colors.grey[200],
                     ),
                     child: Text(filter)),
               );
             }).toList(),
-          )
+          ),
+          Expanded(
+              child: ListView.builder(
+                  itemCount: filteredQuestions.length,
+                  itemBuilder: (context, index) {
+                    final question = filteredQuestions[index];
+                    return ListTile(
+                      title: Text('Year ${question['year']}'),
+                      subtitle: Text(
+                          'Paper ${question['paperNumber']} : ${question['body']}'),
+                    );
+                  }))
         ],
       ),
     );
