@@ -6,8 +6,21 @@ class QuestionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      primary: true,
+      appBar: AppBar(
+        title: Text(
+          'Revision Questions',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         children: [
+          SizedBox(
+            height: 40,
+          ),
           Center(
             child: Text('Questions here'),
           )
