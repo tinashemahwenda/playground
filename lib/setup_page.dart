@@ -33,6 +33,12 @@ class _SetupPageState extends State<SetupPage> {
     }
   }
 
+  saveNameAndPhone() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('name', _nameController.text);
+    prefs.setString('phoneNumber', _phoneNumberController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_isFormVisible) {
