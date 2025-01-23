@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Welcome Back, ${_name[0].toUpperCase()}'),
+          Text('Welcome Back, ${_name.toUpperCase()}'),
           Center(
             child: Text(
               '$_value',
