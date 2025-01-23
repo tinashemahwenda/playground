@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground/questions_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -102,6 +103,18 @@ class _HomePageState extends State<HomePage> {
                 onPressed: _decrementCounter,
                 child: Text(
                   'Subtract',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QuestionsPage())),
+                child: Text(
+                  'Questions',
                   style: TextStyle(
                     color: Colors.white,
                   ),
