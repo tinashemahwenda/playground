@@ -25,6 +25,11 @@ class _QuestionsPageState extends State<QuestionsPage> {
         : questions
             .where((q) => q['year'].toString() == selectedFilter)
             .toList();
+
+    List<String> filterOptions = [
+      'All',
+      ...questions.map((q) => q['year'].toString()).toSet().toList(),
+    ];
     return Scaffold(
       primary: true,
       appBar: AppBar(
@@ -41,8 +46,23 @@ class _QuestionsPageState extends State<QuestionsPage> {
           SizedBox(
             height: 40,
           ),
-          Center(
-            child: Text('Questions here'),
+          Row(
+            children: filterOptions.map((filter) {
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedFilter = filter;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          selectedFilter == filter ? Colors.blue : Colors.grey,
+                    ),
+                    child: Text(filter)),
+              );
+            }).toList(),
           )
         ],
       ),
