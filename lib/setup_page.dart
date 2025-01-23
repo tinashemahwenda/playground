@@ -14,7 +14,6 @@ class _SetupPageState extends State<SetupPage> {
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   bool _isFormVisible = true;
-  // ignore: unused_field
   String _existingName = '';
 
   @override
@@ -45,50 +44,59 @@ class _SetupPageState extends State<SetupPage> {
     if (_isFormVisible) {
       return Form(
           key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  label: Text('Name'),
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _phoneNumberController,
-                decoration: InputDecoration(
-                  label: Text('Phone Number'),
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your phone number';
-                  }
-                  return null;
-                },
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    saveNameAndPhone();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  }
-                },
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Colors.white,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                spacing: 10,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextFormField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      label: Text('Name'),
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
                   ),
-                ),
-                style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+                  TextFormField(
+                    controller: _phoneNumberController,
+                    decoration: InputDecoration(
+                      label: Text('Phone Number'),
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your phone number';
+                      }
+                      return null;
+                    },
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        saveNameAndPhone();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      }
+                    },
+                    child: Text(
+                      'Add',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+                  ),
+                ],
               ),
-            ],
+            ),
           ));
     } else {
       return HomePage();

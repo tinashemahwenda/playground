@@ -10,11 +10,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _value = 0;
+  String _name = '';
 
   @override
   void initState() {
     super.initState();
     _loadCounter();
+    _loadProfileData();
+  }
+
+  _loadProfileData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final name = prefs.getString('name');
+    setState(() {
+      _name = name!;
+    });
   }
 
   void _loadCounter() async {
@@ -60,6 +70,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text('Welcome Back, ${_name[0].toUpperCase()}'),
           Center(
             child: Text(
               '$_value',
