@@ -10,10 +10,11 @@ class SetupPage extends StatefulWidget {
 }
 
 class _SetupPageState extends State<SetupPage> {
-  final _formKey = GlobalKey<FormState>;
+  final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   bool _isFormVisible = true;
+  // ignore: unused_field
   String _existingName = '';
 
   @override
@@ -42,7 +43,53 @@ class _SetupPageState extends State<SetupPage> {
   @override
   Widget build(BuildContext context) {
     if (_isFormVisible) {
-      return Form(child: Column());
+      return Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  label: Text('Name'),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _phoneNumberController,
+                decoration: InputDecoration(
+                  label: Text('Phone Number'),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your phone number';
+                  }
+                  return null;
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    saveNameAndPhone();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  }
+                },
+                child: Text(
+                  'Submit',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+              ),
+            ],
+          ));
     } else {
       return HomePage();
     }
