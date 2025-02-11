@@ -29,6 +29,14 @@ class _DigitalClockState extends State<DigitalClock> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(_timeString));
+    return Center(
+        child: Text(
+      _timeString,
+      style: TextStyle(
+        fontSize: 100,
+        fontFamily: 'Led-Font',
+        color: Colors.white,
+      ),
+    ));
   }
 }
