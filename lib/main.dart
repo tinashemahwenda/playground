@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:playground/homepage.dart';
-import 'package:playground/setup_page.dart';
+import 'package:playground/digital_clock.dart';
 
 void main() {
   runApp(PlayGround());
@@ -13,7 +12,7 @@ class PlayGround extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SetupPage(),
+        body: DigitalClock(),
       ),
     );
   }
