@@ -56,6 +56,8 @@ class _DigitalClockState extends State<DigitalClock> {
             value: _seconds / 60,
             valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             backgroundColor: Colors.white24,
+            borderRadius: BorderRadius.circular(40),
+            minHeight: 5,
           ),
         ),
         SizedBox(height: 20),
