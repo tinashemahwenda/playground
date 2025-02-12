@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:playground/digital_clock.dart';
+
+import 'package:playground/image_homepage.dart';
 
 void main() {
   runApp(PlayGround());
@@ -13,7 +14,7 @@ class PlayGround extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         //backgroundColor: Colors.black,
-        body: ImageHomepage(),
+        body: SafeArea(child: ImageHomepage()),
       ),
     );
   }
