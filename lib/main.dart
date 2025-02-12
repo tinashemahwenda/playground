@@ -13,7 +13,7 @@ class PlayGround extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         //backgroundColor: Colors.black,
-        body: DigitalClock(),
+        body: ImageHomepage(),
       ),
     );
   }
