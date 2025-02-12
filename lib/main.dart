@@ -12,7 +12,7 @@ class PlayGround extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        //backgroundColor: Colors.black,
         body: DigitalClock(),
       ),
     );
